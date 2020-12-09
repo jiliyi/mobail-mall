@@ -50,3 +50,11 @@ postcss-px2rem
 https://youzan.github.io/
 备注：打不开就在hosts文件加上
 185.199.111.153    youzan.github.io
+
+## 关于后端数据获取
+这个接口是在逛csdn时看一位热心网友分享的，不过要注册，但好处是免费的
+接口获取注册网址：http://mallapi.duyiedu.com/login/#/login，有个关键参数appkey(yijili_1607537083645)需要记下来，每次请求时要带上appkey，这个明显是对方在后台设置了，不知道这接口能用多久，能用一时是一时吧。笔者选用axios发送网络请求。
+baseUrl : https://mallapi.duyiedu.com/goods/
+1 获取二级导航栏：
+路径：/getsidebar，
+参数 ：type（获取一级导航对应的二级导航）

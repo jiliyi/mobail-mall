@@ -6,7 +6,7 @@ module.exports = {
       postcss:{
         plugins:[
           px2rem({
-            remUnit :75 //转换基数，与设计稿同步的话，直接用设计稿的的数据就行
+            remUnit :37.5 //转换基数，与设计稿同步的话，直接用设计稿的的数据就行
           })
         ]
       }
