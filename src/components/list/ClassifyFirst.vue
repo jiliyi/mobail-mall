@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions} from 'vuex';
+import animate from '@/tools/animate'
 export default {
     data(){
         return {
@@ -151,24 +152,9 @@ export default {
             const {oneTab} = this.$refs;
             const wrapperWidth = oneTab.getBoundingClientRect().width;//拿到父级以及计算父级的宽度
             const scrollLeft = itemLeft -  wrapperWidth / 2 + itemWidth / 2;
-            this.animate(oneTab.scrollLeft,oneTab.scrollLeft+scrollLeft)//让父级元素始终滚动至中间。
+            animate( oneTab,'scrollLeft',oneTab.scrollLeft,oneTab.scrollLeft+scrollLeft)//让父级元素始终滚动至中间。
             this.getSideArr(this.menuList[index].title)//点击完成之后发送网络请求，获取二级导航栏数据
         },
-        animate(start,end){//辅助运动函数
-          let dis = 0//初始的累加值
-          let speed = 5;//运动速度
-          if(end-start < 0){//反向运动时，速度变向
-            speed *= -1
-          }
-          let timer = setInterval(()=>{
-            dis += speed;
-            this.$refs.oneTab.scrollLeft = start + dis;
-            if(start + dis > end){
-              this.$refs.oneTab.scrollLeft = end;
-              clearInterval(timer)
-            }
-          },2)
-        }
     },
 }
 </script>
