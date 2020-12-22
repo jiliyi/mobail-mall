@@ -156,6 +156,9 @@ export default {
             this.getSideArr(this.menuList[index].title)//点击完成之后发送网络请求，获取二级导航栏数据
         },
     },
+    mounted(){//挂载时获取侧边栏数据
+      this.getSideArr(this.menuList[0].title)
+    }
 }
 </script>
 

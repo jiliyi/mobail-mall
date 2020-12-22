@@ -1,9 +1,10 @@
+//备用appkey: yijili_1607537083645
 import axios from 'axios';
 import baseUrl ,{paths} from './url' 
 const request = axios.create({
     baseURL : baseUrl,
     params : {
-        appkey : 'yijili_1607537083645'
+        appkey : 'dd_1597654682810'
     }
 })
 request.interceptors.response.use(res=>{
@@ -14,6 +15,15 @@ const getSidebar = (type)=>request.get(paths.getSidebar,{
         type
     }
 })
+const getGoodsList = (type,page,size,sort)=>request.get(paths.getGoodsList,{
+    params :{
+        type,
+        page,
+        size,
+        sort
+    }
+})
 export default {
-    getSidebar
+    getSidebar,
+    getGoodsList
 }

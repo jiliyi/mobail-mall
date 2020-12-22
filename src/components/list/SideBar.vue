@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import animate from '@/tools/animate'
+import { mapActions, mapState } from 'vuex';
+import animate from '@/tools/animate';
 export default {
     data(){
         return {
@@ -38,11 +38,26 @@ export default {
             const scrollTop = - height / 2 - tabTop + (itemTop + itemHeight / 2)
             //通过一个运动函数来实现动画过程
             animate(oneTab,'scrollTop',oneTab.scrollTop,oneTab.scrollTop+scrollTop)
-        }
+            this.getGoodsList({
+                type : this.sideList[index],
+                page : 1,
+                size : 5,
+                sort : 'all'
+            })
+        },
+        ...mapActions(['getGoodsList'] )
     },
     computed : {
         ...mapState({
             sideList : state=>state.sideArr
+        }),
+    },
+    mounted(){
+        this.getGoodsList({
+            type:this.sideList[0],
+            page : 1,
+            size : 5,
+            sort : 'all'
         })
     }
 }
